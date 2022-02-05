@@ -13,8 +13,8 @@ const Nav = styled.nav`
   justify-content:space-around;
   align-items: center;
   padding: 0.5rem 0;
-
-  .navbar-brand{
+  
+  &.navbar-brand{
     color: #CF0A2C;
   }
   .navbar-nav{
@@ -26,8 +26,11 @@ const Nav = styled.nav`
   .navbar-link{
     padding: 0.5rem 0;
     text-decoration: none;
+    color: #CF0A2C;
+
   }
   li .navbar-link{
+    color: black;
     position:relative;
     padding: 0.5rem 0;
     text-decoration: none;
@@ -52,9 +55,6 @@ const Nav = styled.nav`
     height: 100%;
   }
   
-  .navbar-link:visited {
-    color: inherit;
-  }
 `
 
 export default Nav

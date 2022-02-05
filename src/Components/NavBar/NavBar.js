@@ -22,21 +22,21 @@ const NavBar = () => {
             className='navbar-item'>
                 <a
                 className='navbar-link'
-                href='/pastas' 
+                href='/cervezas' 
                 rel="noopener noreferrer"
                 target="_blank"
                 >
-                    Pastas
+                    Cervezas
                 </a>
             </li>
             <li className='navbar-item'>
                 <a
                 className='navbar-link'
-                href='/vegan' 
+                href='/friesNachos' 
                 rel="noopener noreferrer"
                 target="_blank"
                 >
-                    Vegan
+                    Fritas y Nachos
                 </a>
             </li>
             <li className='navbar-item'>
