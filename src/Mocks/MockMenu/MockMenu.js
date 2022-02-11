@@ -1,7 +1,7 @@
-export const burguers = [
+const burguers = [
     {
         id: '7ad1d4d7-eb9d-4731-8d85-cb9414b538eb',
-        title: 'Hamburguesa 5D',
+        title: 'Hamburguesa quinta',
         description: 'Quintuple hamburguesa con cheddar y panceta',
         price: 1600,
         pictureUrl: 'img/categoria/burguer/5D-burguer.jpg'
@@ -66,7 +66,7 @@ export const burguers = [
     
 ]
 
-export const beers = [
+const beers = [
     {
         id: '25e6a0ba-610e-491d-a286-1e477169f56f',
         title: 'Honey IPA',
@@ -132,7 +132,7 @@ export const beers = [
     }
 ]
 
-export const friesNachos = [
+const friesNachos = [
     {
         id: 'cb3a97ae-7216-476f-9879-756939c0926a',
         title: 'Batatas fritas',
@@ -149,7 +149,7 @@ export const friesNachos = [
     },
     {
         id: '68723f60-79bf-4a09-b0e3-c7af53a334dd',
-        title: 'Papas fritas con cheddar y muzzarella',
+        title: 'Papas fritas dos quesos',
         description: 'Papas fritas con cheddar, hebras de muzzarella y perejil',
         price: 800,
         pictureUrl: 'img/categoria/friesNachos/cheddar-muzza-fries.jpg'
@@ -191,7 +191,7 @@ export const friesNachos = [
     }
 ]
 
-export const pizzas = [
+const pizzas = [
     {
         id: '1005e759-7bc5-4917-aa24-8a6becdf0598',
         title: 'Pizza cuatro quesos',
@@ -243,4 +243,31 @@ export const pizzas = [
     },
 ]
 
+const allMenuGrouped = [...burguers, ...beers, ...friesNachos, ...pizzas]
 
+
+export const burguersEndpoint = {
+    data: burguers,
+    title: 'Burguers'
+}
+export const beersEndpoint = {
+    data: beers,
+    title: 'Cervezas'
+}
+export const friesNachosEndpoint = {
+    data: friesNachos,
+    title: 'Fritas y Nachos'
+}
+export const pizzasEndpoint = {
+    data: pizzas,
+    title: 'Pizzas'
+}
+export const allMenuGroupedEndpoint = {
+    data: allMenuGrouped,
+    title: 'Nuestro menu'
+}
+
+// export const allMenu = allMenuGrouped
+//   .map(value => ({ value, sort: Math.random() }))
+//   .sort((a, b) => a.sort - b.sort)
+//   .map(({ value }) => value)

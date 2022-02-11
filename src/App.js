@@ -1,31 +1,25 @@
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import NavBar from './Components/NavBar/NavBar'
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
-import { burguers, beers, friesNachos, pizzas} from './Mocks/MockMenu'
+
 
 
 function App() {
   return (
-    <>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <NavBar />
       <main>
-          <ItemListContainer 
-            endpoint={burguers} 
-            title='Hamburguesas' 
-          />
-          <ItemListContainer 
-            endpoint={friesNachos} 
-            title='Fritas y Nachos' 
-          />
-          <ItemListContainer 
-            endpoint={beers} 
-            title='Cervezas' 
-          />
-          <ItemListContainer 
-            endpoint={pizzas} 
-            title='Pizzas' 
-          />
+        <Routes>  
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/productos/:categoryId" element={<ItemListContainer />}  />
+          {/*
+          <Route path='/detail/:itemId' element={ <ItemDetailContainer/> } /> */}
+          {/* <Route path='/contacto' element={ <Contacto/> } />
+          <Route path='/nosotros' element={ <Nosotros/> } /> */}
+          <Route path='*' element={ <Navigate to='/'/> } />
+        </Routes>
       </main>
-    </>
+    </BrowserRouter>
   );
 }
 

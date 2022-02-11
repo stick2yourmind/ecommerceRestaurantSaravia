@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+
 import Nav from './NavBarStyles'
 import CartWidget from '../CartWidget/CartWidget'
 
@@ -20,44 +22,36 @@ const NavBar = () => {
         <ul className='navbar-nav'>
             <li 
             className='navbar-item'>
-                <a
-                className='navbar-link'
-                href='/cervezas' 
-                rel="noopener noreferrer"
-                target="_blank"
+                <Link 
+                    className='navbar-link'
+                    to="/"
                 >
-                    Cervezas
-                </a>
+                    Home
+                </Link>
             </li>
             <li className='navbar-item'>
-                <a
-                className='navbar-link'
-                href='/friesNachos' 
-                rel="noopener noreferrer"
-                target="_blank"
+                <Link 
+                    className='navbar-link'
+                    to="productos/fries-nachos"
                 >
                     Fritas y Nachos
-                </a>
+                </Link>
             </li>
             <li className='navbar-item'>
-                <a
-                className='navbar-link'
-                href='/burguers' 
-                rel="noopener noreferrer"
-                target="_blank"
+                <Link 
+                    className='navbar-link'
+                    to="productos/burgers"
                 >
-                    Burguers
-                </a>
+                    Burgers
+                </Link>
             </li>
             <li className='navbar-item'>
-                <a
-                className='navbar-link'
-                href='/pizzas' 
-                rel="noopener noreferrer"
-                target="_blank"
+                <Link 
+                    className='navbar-link'
+                    to="productos/pizzas"
                 >
                     Pizzas
-                </a>
+                </Link>
             </li>
         </ul>
         <CartWidget />

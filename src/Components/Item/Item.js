@@ -6,7 +6,7 @@ const Item = ({id, title, description, price, img}) => {
     <ItemStyled>
         <img className='imgItem'
             alt={description}
-            src={process.env.PUBLIC_URL + img} 
+            src={ '/' + img} 
         />
         <div className='bodyItem'>
             <h4 className='titleItem'>
