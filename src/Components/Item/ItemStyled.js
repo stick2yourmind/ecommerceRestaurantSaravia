@@ -17,15 +17,23 @@ const ItemList = styled.li`
   }
 
   .titleItem{
-      font-size: 0.9rem;
+    font-size: 0.9rem;
   }
 
   .priceItem{
-      font-size: 0.8rem;
+    font-size: 0.8rem;
   }
   
   .buttonItem{
-      align-self:center;
+    align-self:center;    
+    background: none;
+    border: none;
+  }
+
+  .linkButtonItem{
+    text-decoration: none;
+    color: #CF0A2C;
+    font-weight: bold;
   }
 `
 

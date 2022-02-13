@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import ItemStyled from './ItemStyled'
 
 const Item = ({id, title, description, price, img}) => {
@@ -17,8 +18,11 @@ const Item = ({id, title, description, price, img}) => {
             </p>
             <button className='buttonItem'
                 id={id}
-                type="button">
-                Comprar
+                type="button"
+            >
+                <Link className='linkButtonItem' to={`/detalle/${id}`}>
+                    Comprar
+                </Link>
             </button>
 
         </div>
