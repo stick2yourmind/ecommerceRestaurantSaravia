@@ -22,7 +22,7 @@ const ItemDetailContainer = () => {
         <ItemDetailContainerStyled>
             {
             Object.keys(ItemDetailed).length === 0 
-                ?   <p>Cargado item detallado</p>
+                ?   <p>Cargando detalle del producto</p>
                 :   <ItemDetail {...ItemDetailed}
                     />
             }
