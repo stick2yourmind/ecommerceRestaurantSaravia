@@ -32,9 +32,16 @@ const ItemDetail = ({ id, title, description, price, pictureUrl:img}) => {
                 <input  
                     type='number'
                     value={quantity} 
-                    min="1" 
-                    max="5"
-                    onChange={ ({ target }) => setQuantity(+target.value) }
+                    min={MIN_QUANTITY_DEF}
+                    max={MAX_QUANTITY_DEF}
+                    onChange={ ({ target }) => {
+                        if(target.value > MIN_QUANTITY_DEF && target.value < MAX_QUANTITY_DEF)
+                            return setQuantity(Math.trunc(+target.value))
+                        target.value > MAX_QUANTITY_DEF
+                            ? target.value = MAX_QUANTITY_DEF
+                            : target.value = MIN_QUANTITY_DEF
+                        setQuantity(+target.value)
+                    } }
                 >
                 </input>
                 <img 
