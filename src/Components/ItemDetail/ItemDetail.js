@@ -5,8 +5,18 @@ import subtractIcon from './subtract.svg'
 const MIN_QUANTITY_DEF = 0
 const MAX_QUANTITY_DEF = 10
 
+
 const ItemDetail = ({ id, title, description, price, pictureUrl:img}) => {
     const [quantity, setQuantity] = useState(0)
+    
+    const validateInput = ({ target }) => {
+        if(target.value > MIN_QUANTITY_DEF && target.value < MAX_QUANTITY_DEF)
+            return setQuantity(Math.trunc(+target.value))
+        target.value > MAX_QUANTITY_DEF
+            ? target.value = MAX_QUANTITY_DEF
+            : target.value = MIN_QUANTITY_DEF
+        setQuantity(+target.value)
+    }
 
     return(
         <div className="itemCardDetailed">
@@ -34,14 +44,7 @@ const ItemDetail = ({ id, title, description, price, pictureUrl:img}) => {
                     value={quantity} 
                     min={MIN_QUANTITY_DEF}
                     max={MAX_QUANTITY_DEF}
-                    onChange={ ({ target }) => {
-                        if(target.value > MIN_QUANTITY_DEF && target.value < MAX_QUANTITY_DEF)
-                            return setQuantity(Math.trunc(+target.value))
-                        target.value > MAX_QUANTITY_DEF
-                            ? target.value = MAX_QUANTITY_DEF
-                            : target.value = MIN_QUANTITY_DEF
-                        setQuantity(+target.value)
-                    } }
+                    onChange={ validateInput }
                 >
                 </input>
                 <img 
