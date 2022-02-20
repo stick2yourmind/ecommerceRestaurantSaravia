@@ -10,11 +10,11 @@ const ItemDetailContainer = () => {
     const [ItemDetailed, setItemDetailed ] = useState({})
 
     useEffect( () => {
-        console.log(itemId)
+        // console.log(itemId)
         getPromiseItemById(itemId)
             .then((item)=> {
                 setItemDetailed(item)
-                console.log(item)    
+                // console.log(item)    
             })
     } , [])
 

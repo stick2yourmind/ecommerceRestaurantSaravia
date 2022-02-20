@@ -1,22 +1,19 @@
-import { useState } from "react"
-import addIcon from './add.svg'
-import subtractIcon from './subtract.svg'
-
-const MIN_QUANTITY_DEF = 0
-const MAX_QUANTITY_DEF = 10
-
+import { useContext, useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
+import { CartContext } from '../../Context/CartContext/CartContext'
+import { ItemCount } from '../ItemCount/ItemCount'
 
 const ItemDetail = ({ id, title, description, price, pictureUrl:img}) => {
-    const [quantity, setQuantity] = useState(0)
+    const { isInCart: isInCartContextGetter } = useContext(CartContext)
+    const [isInCart, setIsInCart] = useState(()=>isInCartContextGetter(id))
+
+    useEffect(() => {
+      let aux = isInCartContextGetter(id)
+      console.log('aux: ', aux)
+      setIsInCart(aux)
+    }, )
     
-    const validateInput = ({ target }) => {
-        if(target.value > MIN_QUANTITY_DEF && target.value < MAX_QUANTITY_DEF)
-            return setQuantity(Math.trunc(+target.value))
-        target.value > MAX_QUANTITY_DEF
-            ? target.value = MAX_QUANTITY_DEF
-            : target.value = MIN_QUANTITY_DEF
-        setQuantity(+target.value)
-    }
+
 
     return(
         <div className="itemCardDetailed">
@@ -32,28 +29,10 @@ const ItemDetail = ({ id, title, description, price, pictureUrl:img}) => {
                     $ {price}
                 </h4>
             </div>
-            <div className="quantityContainer">
-                <img 
-                    alt={`Subtract one ${title}`} 
-                    className='iconImg' 
-                    src={subtractIcon} 
-                    onClick={()=> quantity>MIN_QUANTITY_DEF && setQuantity(quantity - 1)}
-                />
-                <input  
-                    type='number'
-                    value={quantity} 
-                    min={MIN_QUANTITY_DEF}
-                    max={MAX_QUANTITY_DEF}
-                    onChange={ validateInput }
-                >
-                </input>
-                <img 
-                    alt={`Subtract one ${title}`} 
-                    className='iconImg' 
-                    src={addIcon}
-                    onClick={()=> quantity<MAX_QUANTITY_DEF && setQuantity(quantity + 1)}
-                />
-            </div>
+            {!isInCart 
+                ? <ItemCount item={ {id, title, description, price, img} }/>
+                : <Link to="/cart"> Terminar compra</Link>}
+
         </div>
 
     )

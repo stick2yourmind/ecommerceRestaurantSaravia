@@ -10,14 +10,12 @@ const NavBar = () => {
   return (
     <Nav>
         <h1 className='navbar-brand'>
-                <a
-                className='navbar-link'
-                href='/' 
-                rel="noopener noreferrer"
-                target="_blank"
+                <Link 
+                    className='navbar-link'
+                    to="/"
                 >
                     Ccia Bar
-                </a>
+                </Link>
         </h1>
         <ul className='navbar-nav'>
             <li 

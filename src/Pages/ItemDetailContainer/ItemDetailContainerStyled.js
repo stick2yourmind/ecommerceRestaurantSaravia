@@ -49,11 +49,14 @@ export const ItemDetailContainerStyled = styled.div`
     }
 
     .quantityContainer{
-        height: 1rem;
-        margin-top: 0.4rem;
-        display: flex;
-        justify-content: center;
         align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 0.4rem;
+    }
+    .quantityItem{
+        height: 1rem;
     }
 
     .iconImg{
@@ -78,4 +81,19 @@ export const ItemDetailContainerStyled = styled.div`
         -webkit-appearance: none; 
         margin: 0; 
     }   
+
+    .buyButton{    
+        background: #dec27d;
+        border-radius: 0.3rem;
+        border: none;
+        color: saddlebrown;
+        margin-top: 0.7rem;
+        padding: 0.3rem;
+    }
+
+    // .buyButton[disabled]{
+    //     text-decoration:line-through;
+    // }
+
+
 `

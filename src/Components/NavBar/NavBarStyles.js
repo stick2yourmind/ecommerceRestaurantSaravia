@@ -51,8 +51,19 @@ const Nav = styled.nav`
 
     }
   }
-  .navbar-img{
+  .cartContainer{
     height: 100%;
+    position: relative;
+  }
+
+  .cartImg{
+    height: 100%;
+  }
+  .cartQuantity{
+    position: absolute;
+    font-size: 0.7rem;
+    top: 0.3rem;
+    left: 0.8rem;
   }
   
 `
