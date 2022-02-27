@@ -48,6 +48,16 @@ export const ItemDetailContainerStyled = styled.div`
         font-size: 0.7rem;
     }
 
+    .checkoutLink{    
+        background-color: #cf2845;
+        border-radius: 1.1rem;
+        color: antiquewhite;
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        text-align: center;
+        text-decoration: none;
+    }
+
     .quantityContainer{
         align-items: center;
         display: flex;
@@ -89,6 +99,11 @@ export const ItemDetailContainerStyled = styled.div`
         color: saddlebrown;
         margin-top: 0.7rem;
         padding: 0.3rem;
+    }
+
+    .buyButton:hover{
+        transform: scale(1.1);
+        transition: transform ease 0.3s;
     }
 
     // .buyButton[disabled]{

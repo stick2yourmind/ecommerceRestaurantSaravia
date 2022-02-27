@@ -45,7 +45,7 @@ export const CartProvider = ({ children }) => {
         return cart.reduce( ( totalQuantity, { quantity } ) =>   totalQuantity + quantity , 0)
     }
 
-    const removeItemFromCart = ( itemId ) => {
+    const deleteItemFromCart = ( itemId ) => {
         console.log('-- CartContext: removeItemFromCart --')
         setCart(cart.filter( ({ item }) => item.id !== itemId))
     }
@@ -63,7 +63,7 @@ export const CartProvider = ({ children }) => {
             isInCart,
             getItemQuantity,
             updateItemQuantity,
-            removeItemFromCart,
+            deleteItemFromCart,
             totalPriceCart,
             totalQuantityCart
         }}

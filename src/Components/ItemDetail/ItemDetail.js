@@ -1,19 +1,10 @@
-import { useContext, useState, useEffect } from "react"
+import { useContext } from "react"
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../Context/CartContext/CartContext'
 import { ItemCount } from '../ItemCount/ItemCount'
 
 const ItemDetail = ({ id, title, description, price, pictureUrl:img}) => {
-    const { isInCart: isInCartContextGetter } = useContext(CartContext)
-    const [isInCart, setIsInCart] = useState(()=>isInCartContextGetter(id))
-
-    useEffect(() => {
-      let aux = isInCartContextGetter(id)
-      console.log('aux: ', aux)
-      setIsInCart(aux)
-    }, )
-    
-
+    const { isInCart } = useContext(CartContext)
 
     return(
         <div className="itemCardDetailed">
@@ -29,12 +20,11 @@ const ItemDetail = ({ id, title, description, price, pictureUrl:img}) => {
                     $ {price}
                 </h4>
             </div>
-            {!isInCart 
+            {!isInCart(id) 
                 ? <ItemCount item={ {id, title, description, price, img} }/>
-                : <Link to="/cart"> Terminar compra</Link>}
+                : <Link className="checkoutLink" to="/cart"> Finalizar compra</Link>}
 
         </div>
-
     )
 } 
 

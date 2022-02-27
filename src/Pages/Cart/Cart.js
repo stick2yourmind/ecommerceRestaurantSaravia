@@ -1,40 +1,39 @@
 import { useContext } from "react"
 import { CartContext } from "../../Context/CartContext/CartContext"
 import { CartStyled } from "./CartStyled"
+import CartItem from "../../Components/CartItem/CartItem"
+import { Link } from 'react-router-dom'
 
 const Cart = () => {
-    const { cart, totalPriceCart } = useContext(CartContext)
-    return(
-        <>
-        {cart.map( ({item:{id}, item:{description}, item:{title}, item:{img}, item:{price},quantity}) => (
-                <CartStyled
-                >   
-                    <img className='imgItemCart'
-                        alt={description}
-                        src={ '/' + img} 
-                    />
-                    <div className='bodyItem'>
-                    <h4 className='titleItem'>
-                        {title}
-                    </h4>
-                    <h5  className='priceItem'>
-                        $ {price}
-                    </h5>
-                    <h5  className='quantityItem'>
-                        Cantidad: { quantity }
-                    </h5>
-                    <h5  className='priceItem'>
-                        Subtotal: $ {price  * quantity}
-                    </h5>
-                    
+    const { cart, totalPriceCart, totalQuantityCart } = useContext(CartContext)
+    const cartNotEmpty = () =>{
+        return(
+            <>
+                {cart.map( (itemOrder) => 
+                        <CartItem {...itemOrder} />
+                        )}
+                <h3 className="totalPriceCart" >
+                    Total: $ {totalPriceCart()}
+                </h3>
+            </>)
 
-                    </div>
-                </CartStyled>
-        ) )}
-        <h3>
-            Total: $ {totalPriceCart()}
-        </h3>
-        </>
+    }
+
+    const cartEmpty = () =>{
+        return(
+            <div className="emptyCartContainer">
+                <p className="emptyCartTitle">Carrito vacio :(</p>
+                <Link className="emptyCartLink" to='/'> Volver a la pagina principal</Link>
+            </div>
+
+        )
+    }
+    return(
+        <CartStyled>
+        {totalQuantityCart()
+            ? cartNotEmpty()
+            : cartEmpty()}
+        </CartStyled>
     )
 
 }
