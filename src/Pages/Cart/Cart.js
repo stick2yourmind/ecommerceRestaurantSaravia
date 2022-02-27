@@ -3,9 +3,11 @@ import { CartContext } from "../../Context/CartContext/CartContext"
 import { CartStyled } from "./CartStyled"
 import CartItem from "../../Components/CartItem/CartItem"
 import { Link } from 'react-router-dom'
+import { getAllMenu } from '../../services/firebase/query'
 
 const Cart = () => {
     const { cart, totalPriceCart, totalQuantityCart } = useContext(CartContext)
+    console.log('getAllMenu: ', getAllMenu())
     const cartNotEmpty = () =>{
         return(
             <>
