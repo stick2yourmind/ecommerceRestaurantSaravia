@@ -106,9 +106,13 @@ export const ItemDetailContainerStyled = styled.div`
         transition: transform ease 0.3s;
     }
 
-    // .buyButton[disabled]{
-    //     text-decoration:line-through;
-    // }
+    .buyButton[disabled]{
+        text-decoration:line-through;
+    }
+    .buyButton[disabled]:hover{
+        transform:none;
+        transition: none;
+    }
 
 
 `

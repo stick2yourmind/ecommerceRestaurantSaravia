@@ -57,7 +57,9 @@ export const ItemCount = ( { item } ) =>{
         </div>
         <button 
             className="buyButton"
-            onClick={ () => onAdd(item.id) } >
+            onClick={ () => onAdd(item.id) } 
+            disabled={!quantity}
+        >
             Comprar
         </button>
     </div>
