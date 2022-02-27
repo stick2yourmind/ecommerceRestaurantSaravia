@@ -1,22 +1,20 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getPromiseItemById } from '../../services/API/getPromiseItemById/getPromiseItemById'
 import ItemDetail from '../../Components/ItemDetail/ItemDetail'
 import { ItemDetailContainerStyled } from './ItemDetailContainerStyled'
+import { getItemById } from '../../services/firebase/query'
 
 
 const ItemDetailContainer = () => {
     const { itemId } = useParams()
     const [ItemDetailed, setItemDetailed ] = useState({})
 
-    useEffect( () => {
-        // console.log(itemId)
-        getPromiseItemById(itemId)
-            .then((item)=> {
-                setItemDetailed(item)
-                // console.log(item)    
-            })
-    } , [])
+     useEffect( () => {
+        getItemById(itemId)
+            .then(dataFetched => {
+        setItemDetailed(dataFetched)
+      })
+     } , [itemId])
 
     return(
         <ItemDetailContainerStyled>

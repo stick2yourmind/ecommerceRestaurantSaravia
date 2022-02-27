@@ -12,7 +12,7 @@ const Cart = () => {
         return(
             <>
                 {cart.map( (itemOrder) => 
-                        <CartItem {...itemOrder} />
+                        <CartItem {...itemOrder} key={itemOrder.item.id}/>
                         )}
                 <h3 className="totalPriceCart" >
                     Total: $ {totalPriceCart()}

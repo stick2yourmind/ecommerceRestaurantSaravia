@@ -8,17 +8,17 @@ import ItemList from './ItemListContainerStyles'
 import Item from '../Item/Item'
 
 // endpoints
-import {allMenuGroupedEndpoint, beersEndpoint, burguersEndpoint, pizzasEndpoint, friesNachosEndpoint} from '../../Mocks/MockMenu/MockMenu'
+import { getAllMenu, getCategoryMenu } from '../../services/firebase/query'
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([])
   const { categoryId } = useParams()
   let endpointCategories = {
-    undefined : allMenuGroupedEndpoint,
-    'beers': beersEndpoint,
-    'burgers': burguersEndpoint,
-    'fries-nachos': friesNachosEndpoint,
-    'pizzas': pizzasEndpoint
+    undefined : getAllMenu(),
+    'beers': getCategoryMenu('beers'),
+    'burgers': getCategoryMenu('burgers'),
+    'fries-nachos': getCategoryMenu('friesNachos'),
+    'pizzas': getCategoryMenu('pizzas')
   }
 
   useEffect(()=>{

@@ -27,6 +27,15 @@ const NavBar = () => {
                     Home
                 </Link>
             </li>
+            <li 
+            className='navbar-item'>
+                <Link 
+                    className='navbar-link'
+                    to="productos/beers"
+                >
+                    Cervezas
+                </Link>
+            </li>
             <li className='navbar-item'>
                 <Link 
                     className='navbar-link'
