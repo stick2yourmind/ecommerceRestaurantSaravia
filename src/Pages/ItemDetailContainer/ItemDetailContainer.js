@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import ItemDetail from '../../Components/ItemDetail/ItemDetail'
 import { ItemDetailContainerStyled } from './ItemDetailContainerStyled'
 import { getItemById } from '../../services/firebase/query'
+
+
 
 
 const ItemDetailContainer = () => {
@@ -12,17 +14,32 @@ const ItemDetailContainer = () => {
      useEffect( () => {
         getItemById(itemId)
             .then(dataFetched => {
+        console.log('dataFetched: ', dataFetched)
         setItemDetailed(dataFetched)
       })
      } , [itemId])
-
+    
+    const returnToHome = () =>{
+        return(
+        <>
+        <p className='msg-error'>Producto no encontrado :(</p>
+        <Link className='navbar-link-404'
+              to="/">
+                Seccion principal
+        </Link>
+        
+        </>    
+        )
+    }
     return(
         <ItemDetailContainerStyled>
             {
             Object.keys(ItemDetailed).length === 0 
                 ?   <p>Cargando detalle del producto</p>
-                :   <ItemDetail {...ItemDetailed}
-                    />
+                :   ItemDetailed.id === undefined
+                    ?   returnToHome()
+                    :   <ItemDetail {...ItemDetailed}
+                        />
             }
             
         </ItemDetailContainerStyled>

@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 export const ItemDetailContainerStyled = styled.div`
     align-items: center;
     display: flex;
+    flex-direction: column;
     font-family: 'Nanum Gothic', sans-serif;
     justify-content: center;
     padding: 0.8rem;
@@ -32,10 +33,14 @@ export const ItemDetailContainerStyled = styled.div`
     }
 
     .itemImgDetail{
-        border-radius: 2rem;
-        height: 40vw;
-        padding-bottom: 0.4rem;
-        width: auto;
+        // border-radius: 2rem;
+        // height: 40vw;
+        // padding-bottom: 0.4rem;
+        // width: auto;
+        border-radius: 1rem;
+        height: 18rem;
+        object-fit: cover;
+        width: 20rem;
     }
 
     .itemDescriptionDetail{
@@ -113,6 +118,18 @@ export const ItemDetailContainerStyled = styled.div`
         transform:none;
         transition: none;
     }
-
+    .msg-error{
+        display: block;
+    }
+    .navbar-link-404 {
+        background-color: #cf2845;
+        border-radius: 1.1rem;
+        color: antiquewhite;
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        text-align: center;
+        -webkit-text-decoration: none;
+        text-decoration: none;
+    }
 
 `

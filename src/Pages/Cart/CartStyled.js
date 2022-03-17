@@ -12,7 +12,7 @@ export const CartStyled = styled.div`
     }
     .imgItemCart{
         border-radius: 0.8rem;
-        height: 6rem;
+        height: 7.2rem;
         object-fit: cover;
         padding: 0.5rem;
         width: 8rem;

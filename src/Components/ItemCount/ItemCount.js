@@ -23,7 +23,7 @@ export const ItemCount = ( { item } ) =>{
     }
 
     const validateInput = ({ target }) => {
-        if(target.value > MIN_QUANTITY_DEF && target.value < MAX_QUANTITY_DEF)
+        if(target.value > MIN_QUANTITY_DEF && target.value <= MAX_QUANTITY_DEF)
             return setQuantity(Math.trunc(+target.value))
         target.value > MAX_QUANTITY_DEF
             ? target.value = MAX_QUANTITY_DEF

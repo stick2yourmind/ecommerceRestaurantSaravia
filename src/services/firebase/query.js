@@ -44,9 +44,12 @@ export const getCategoryMenu = async (categoryToFetch) =>{
 export const getItemById = async (idToFetch) =>{
     const itemFetched = doc(db, 'productos', idToFetch)
     const snapshotData = await getDoc(itemFetched)
-    const itemFetchedMenu = {
+    let itemFetchedMenu = {
         id: snapshotData.id,
         ...snapshotData.data()
     }
+    // snapshotData.data() returns undefined when no data is matched
+    if (snapshotData.data() === undefined)
+        itemFetchedMenu = {id: undefined}
     return itemFetchedMenu
 }
