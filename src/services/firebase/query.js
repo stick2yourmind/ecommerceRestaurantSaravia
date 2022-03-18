@@ -1,5 +1,7 @@
 import { db } from './config'
-import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, setDoc, addDoc, query, where, serverTimestamp } from 'firebase/firestore'
+import { v4 as uuidv4 } from 'uuid';
+
 
 const titles = {
     'allMenu' : 'Nuestro menu',
@@ -52,4 +54,21 @@ export const getItemById = async (idToFetch) =>{
     if (snapshotData.data() === undefined)
         itemFetchedMenu = {id: undefined}
     return itemFetchedMenu
+}
+
+export const setCartOrder = async (cart, userData) =>{
+    let newCartOrder = null
+    try{
+        const dbReference = doc(db, "cart_orders", userData.email)
+        newCartOrder = {...cart, timestamp: serverTimestamp(), ...userData}
+        const userCollectionReference = collection(dbReference, 'orders')
+        const docRef = await addDoc(userCollectionReference, newCartOrder)
+        newCartOrder['id'] = docRef.id
+    }
+    catch(error){
+        newCartOrder = {error}
+    }
+    finally{
+        return newCartOrder
+    }
 }

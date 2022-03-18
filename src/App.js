@@ -5,6 +5,7 @@ import ItemDetailContainer from "./Pages/ItemDetailContainer/ItemDetailContainer
 // Context
 import { CartProvider } from './Context/CartContext/CartContext'
 import Cart from "./Pages/Cart/Cart";
+import { Contact } from "./Pages/Contact/Contact";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/productos/:categoryId" element={<ItemListContainer />}  />
             <Route path="/detalle/:itemId" element={<ItemDetailContainer />}  />
             <Route path="/cart" element={<Cart />}  />
+            <Route path="/contact" element={<Contact />}  />
             <Route path='*' element={ <Navigate to='/'/> } />
           </Routes>
         </main>

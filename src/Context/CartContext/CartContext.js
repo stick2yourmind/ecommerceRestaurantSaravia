@@ -4,6 +4,7 @@ export const CartContext = createContext()
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([])
+    const [checkout, setCheckout] = useState(false)
 
     const addItemCart = (item, quantity) => {
         console.log('-- CartContext: addItem --')
@@ -55,6 +56,18 @@ export const CartProvider = ({ children }) => {
         return cart.reduce( (totalPrice, { item, quantity }) => totalPrice += +item.price*+quantity,0 )
     }
 
+    const getCheckoutState = (  ) => {
+        return checkout
+    }
+
+    const setCheckoutState = (  ) => {
+        setCheckout(true)
+        return checkout
+    }
+    const resetCheckoutState = (  ) => {
+        setCheckout(false)
+        return checkout
+    }
     return(
         <CartContext.Provider value={{
             addItemCart,
@@ -65,7 +78,10 @@ export const CartProvider = ({ children }) => {
             updateItemQuantity,
             deleteItemFromCart,
             totalPriceCart,
-            totalQuantityCart
+            totalQuantityCart,
+            getCheckoutState,
+            setCheckoutState,
+            resetCheckoutState
         }}
         >
             { children }

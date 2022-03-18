@@ -57,4 +57,14 @@ export const CartStyled = styled.div`
     .totalPriceCart{
         text-align: end;
     }
+    .link {
+        background-color: #cf2845;
+        border-radius: 1.1rem;
+        color: antiquewhite;
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        text-align: center;
+        -webkit-text-decoration: none;
+        text-decoration: none;
+    }
 `
