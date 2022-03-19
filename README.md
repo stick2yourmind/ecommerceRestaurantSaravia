@@ -310,7 +310,8 @@ En el componente FormCard:
     }
 ```
 
-En src/services/firebase/query.js
+En src/services/firebase/query.js:
+NOTA: se añade timestamp/fecha en el backend.
 
 ```
 export const setCartOrder = async (cart, userData) =>{
