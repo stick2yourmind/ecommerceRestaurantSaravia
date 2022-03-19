@@ -4,6 +4,7 @@ import { yupValidationSchema } from './yupValidationSchema'
 import { setCartOrder } from '../../services/firebase/query'
 import { useContext, useState } from "react"
 import { CartContext } from "../../Context/CartContext/CartContext"
+import { Link } from 'react-router-dom'
 
 const initForm = {
     firstName: '',
@@ -14,39 +15,62 @@ const initForm = {
   }
 
 export const FormCard = () => {
-    const { cart } = useContext(CartContext) 
-    const [submitFinished, setSubmitFinished ] = useState(false)
-    const onSubmitHandler = (values, { setSubmitting }) => {
-        console.log('onSubmitHandler')
+    const { cart, clearCart } = useContext(CartContext)
+    const [submitFinished, setSubmitFinished ] = useState(null)
+    const onSubmitHandler = (values) => {
         let userData = {
-                firstName:values.firstName, 
+                firstName:values.firstName,
                 lastName: values.lastName,
                 phoneNumber: values.phoneNumber,
                 email:values.email
-            } 
+            }
         setCartOrder(cart,userData).then((cartOrder) => {
-            console.log(cartOrder)
-            setSubmitting(false)
+            setSubmitFinished(cartOrder)
+            clearCart()
         })
     }
+
+    const purchaseNotFinished = () => {
+        return(
+            <>
+                <h2 className='formTitle'>Datos de contacto</h2>
+                <Formik
+                    initialValues={initForm}
+                    validationSchema={yupValidationSchema}
+                    onSubmit={onSubmitHandler}
+                >
+                    <Form className='formBody'>
+                        <TextField label='Nombre' name='firstName' type='text' placeholder="Nombre"/>
+                        <TextField label='Apellido' name='lastName' type='text' placeholder="Apellido"/>
+                        <TextField label='Telefono' name='phoneNumber' type='tel' placeholder="Telefono"/>
+                        <TextField label='Email' name='email' type='email' placeholder="Email"/>
+                        <TextField label='Reingrese email' name='emailConfirmation' type='email'
+                            placeholder="Reingrese email"/>
+                        <button className='btn' type='submit'>Finalizar compra</button>
+                    </Form>
+                </Formik>
+            </>
+
+        )
+    }
+
+    const purchaseFinished = () => {
+        return(
+            <>
+                <h3 className="msg" >
+                    {`Identificación de su compra: ${submitFinished.id}`}
+                </h3>
+                <Link className="link" to='/' onClick={()=> setSubmitFinished(null)}> Volver a la pagina principal</Link>
+            </>
+
+        )
+    }
     return (
-    <>
-        <h2 className='formTitle'>Datos de contacto</h2>
-        <Formik
-            initialValues={initForm}
-            validationSchema={yupValidationSchema}
-            onSubmit={onSubmitHandler}
-        >
-            <Form className='formBody'>
-                <TextField label='Nombre' name='firstName' type='text' placeholder="Nombre"/>
-                <TextField label='Apellido' name='lastName' type='text' placeholder="Apellido"/>
-                <TextField label='Telefono' name='phoneNumber' type='tel' placeholder="Telefono"/>
-                <TextField label='Email' name='email' type='email' placeholder="Email"/>
-                <TextField label='Reingrese email' name='emailConfirmation' type='email' 
-                    placeholder="Reingrese email"/>
-                <button className='btn' type='submit'>Finalizar compra</button>
-            </Form>
-        </Formik>
-    </>
+        <>
+        {!submitFinished
+            ? purchaseNotFinished()
+            : purchaseFinished()}
+        </>
+
     )
 }

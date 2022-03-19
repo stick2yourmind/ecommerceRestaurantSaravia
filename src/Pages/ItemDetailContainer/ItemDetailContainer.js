@@ -14,7 +14,6 @@ const ItemDetailContainer = () => {
      useEffect( () => {
         getItemById(itemId)
             .then(dataFetched => {
-        console.log('dataFetched: ', dataFetched)
         setItemDetailed(dataFetched)
       })
      } , [itemId])

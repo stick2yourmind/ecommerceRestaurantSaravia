@@ -1,6 +1,6 @@
 import { db } from './config'
-import { collection, doc, getDoc, getDocs, setDoc, addDoc, query, where, serverTimestamp } from 'firebase/firestore'
-import { v4 as uuidv4 } from 'uuid';
+import { collection, doc, getDoc, getDocs, addDoc, query, where, serverTimestamp } from 'firebase/firestore'
+// import { v4 as uuidv4 } from 'uuid';
 
 
 const titles = {

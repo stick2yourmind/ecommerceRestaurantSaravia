@@ -22,17 +22,14 @@ const ItemListContainer = () => {
   }
 
   useEffect(()=>{
-    // console.log('categoryId: ', categoryId)
     // En caso que el location exista en endpointCategories, se le carga el endpoint correspondiente
     // de otra manera se carga por defecto
     let endpoint = endpointCategories?.[categoryId] || endpointCategories.undefined
-    // console.log('endpoint: ', endpoint)
     getPromiseList(endpoint)
       .then(dataFetched => {
-        // console.log(`--ItemListContainer/useEffect/getPromiseList-- data fetched: 
-        // ${JSON.stringify(dataFetched)}`)
         setProducts(dataFetched)
       })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryId])
 
   return (
