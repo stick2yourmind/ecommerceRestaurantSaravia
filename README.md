@@ -14,12 +14,12 @@ npm start
 # Uso y caracteristicas:
 
 Al navegar por la página principal el usuario podra visualizar la lista completa de productos:
-<img src="" alt="foto menu completo"/>
+<img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_menu_principal.JPG?raw=true" alt="Captura menu principal"/>
 En caso que ingrese a una sección inexistente sera redirigido a la página principal.
 En caso que el usuario desee un tipo de producto especifico lo puede hacer clickleando en el 
 navbar la categoria correspondiente.
 Luego de esto el usuario es redirigido a la sección mencionada, ejemplo caso cervezas:
-<img src="" alt="foto menu cerveza click"/>
+<img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_menu_cerveza_click.JPG?raw=true" alt="Captura menu cerveza"/>
 
 Cada categoria obtiene los productos a traves de una query a un servidor de firebase, mediante
 la funcion getCategoryMenu(CATEGORIA_SOLICITADA). La página principal lo hace mediante el 
@@ -58,7 +58,7 @@ const ItemListContainer = () => {
 
 Una vez el usuario decida comprar un producto este sera redirigido a la ruta:
 /detalle/:itemId
-<img src="" alt="foto_compra_producto_1"/>
+<img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_compra_producto_1.JPG?raw=true" alt="Captura detalle de un producto"/>
 - El usuario no podra comprar una cantidad menor a 0 o mayor a 10.
 - En caso que el usuario decida ingresar un valor fuera del rango permitido
    este sera modificado al valor valido mas proximo. En caso que ingrese un 
@@ -76,11 +76,12 @@ Una vez el usuario decida comprar un producto este sera redirigido a la ruta:
 ```
 
 Ejemplo caso valido:
-<img src="" alt="foto_compra_producto_2"/>
+<img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_compra_producto_2.JPG?raw=true" alt="Captura ejemplo valido"/>
 
 Se obtiene la información del producto mediante la query getItemById(ID_DEL_PRODUCTO).
 El metodo retorna la información del producto solicitado si existe en la base de datos,
 de otra manera devuelve un objeto con la propiedad id = undefined.
+
 En el componente ItemDetailContainer:
 ```
     const { itemId } = useParams()
@@ -113,7 +114,7 @@ Luego de ingresar una cantidad valida y clickear comprar, se renderizada un boto
 de finalizar compra si es que no desea comprar mas productos. Se añade usando context la 
 cantidad y el producto al carrito de compras. El navbar es renderizado en consecuencia, de tal
 manera que es visible el carrito y la cantidad de items a comprar.
-<img src="" alt="foto_compra_producto_con_cart"/>
+<img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_compra_producto_con_cart.JPG?raw=true" alt="Captura compra producto"/>
 
 En el componente CartWidget:
 ```
@@ -158,12 +159,12 @@ Hook del boton "Comprar" (Componente ItemCount):
     }
 ```
 En caso que el :id_del_producto no sea encontrado en el servidor de firebase se mostrara el siguiente mensaje:
-<img src="" alt="foto_compra_producto_no_encontrado"/>
+<img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_compra_producto_no_encontrado.JPG?raw=true" alt="Captura producto no encontrado"/>
 
 
 Al hacer click sobre el icono del carrito, ubicado arriba a la derecha, el usuario sera redirigido a la
 direccion /cart donde debera confirmar la compra:
-<img src="" alt="foto_carrito_1.JPG"/>
+<img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_carrito_1.JPG?raw=true" alt="Captura direccion /cart"/>
 
 La lista de compra del carrito se obtiene usando context.
 
@@ -184,7 +185,7 @@ setCheckoutState sera utilizado para determinar cuando el usuario clickeo "Confi
 
 Par eliminar un producto del carrito, se debe dar click en el icono del recipiente de basura.
 Esta acción desencadena el evento onClick y se elimina el item del carrito mediante el
-método deleteItemFromCart
+método deleteItemFromCart.
 
 En el componente CartItem:
 ```
@@ -217,15 +218,15 @@ En el componente CartItem:
 ```
 
 Ejemplo de haber eliminado las 2 pizzas de muzzarella y reemplazada por 3 pizzas de jamon y morrones:
-<img src="" alt="foto_carrito_3.JPG"/>
+<img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_carrito_3.JPG?raw=true" alt="Captura carrito modificado"/>
 
 En caso que el usuario desee ingresar a la direccion /cart sin productos seleccionados para comprar se 
 mostrara el siguiente mensaje:
-<img src="" alt="foto_carrito_0.JPG"/>
+<img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_carrito_0.JPG?raw=true" alt="Captura carrito vacio"/>
 
 Luego de haber confirmado la compra el usuario es redirigido a la direccion /contact donde debe completar
 un formulario:
-<img src="" alt="foto_carrito_4.JPG"/>
+<img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_carrito_4.JPG?raw=true" alt="Captura direccion /contact"/>
 
 El formulario se realiza con la libreria formik y es validada al dispararse un evento onChange utilizando la libreria Yup y expresiones regulares:
 ```
@@ -257,7 +258,7 @@ export const yupValidationSchema = Yup.object({
 
 Cuando el usuario termina de rellenar un campo se renderiza un componente con un error si es que el 
 usuario no paso la validación de dicho campo.
-<img src="" alt="foto_carrito_5.JPG"/>
+<img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_carrito_5.JPG?raw=true" alt="Captura formulario error campo"/>
 
 En caso que el usuario quiera enviar el formulario clickeando "Finalizar compra" se renderizaran todos
 los errores en la validaciones de los campos, si es que existen.
@@ -283,7 +284,7 @@ En el componente FormCard:
                 </Formik>
             </>
 ```
-<img src="" alt="foto_carrito_6.JPG"/>
+<img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_carrito_6.JPG?raw=true" alt="Captura formulario error submit"/>
 
 Al realizar un submit se utiliza el metodo setCartOrder para almacenar los datos de la orden en la base de datos
 de Firebase, este metodo retorna el id de la orden. Adicionalmente se vacia el carrito y se cambia el estado de submitFinished, este cambio de estado permitira que se renderización de un mensaje indicando al usuario el id
@@ -326,14 +327,14 @@ export const setCartOrder = async (cart, userData) =>{
 }
 ```
 
-<img src="" alt="foto_carrito_7.JPG"/>
+<img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_carrito_7.JPG?raw=true" alt="Captura id de la orden generada"/>
 
 Las ordenes son almacenadas en la base de datos de firebase en:
 
 coleccion "cart_orders" -> documento "EMAIL_USUARIO" -> collecion "orders" -> documentos
 
-<img src="" alt="foto_firebase.JPG"/>
+<img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_firebase_1.JPG?raw=true" alt="Captura de almacenamiento de ordenes en la base de datos de Firebase"/>
 
 En caso que el usuario ingrese a la direccion /contact sin haber confirmado un compra se renderizara
 el siguiente mensaje:
-<img src="" alt="foto_carrito_8.JPG"/>
+<img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_carrito_8.JPG?raw=true" alt="Captura seccion /contact sin haber confirmado una compra"/>
