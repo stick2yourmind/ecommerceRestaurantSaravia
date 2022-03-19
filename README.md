@@ -13,6 +13,9 @@ npm start
 
 # Uso y caracteristicas:
 
+[[Video presentación]](https://youtu.be/Hjnm-iVyHZY)
+
+
 Al navegar por la página principal el usuario podra visualizar la lista completa de productos:
 <img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_menu_principal.JPG?raw=true" alt="Captura menu principal"/>
 En caso que ingrese a una sección inexistente sera redirigido a la página principal.
@@ -21,12 +24,13 @@ navbar la categoria correspondiente.
 Luego de esto el usuario es redirigido a la sección mencionada, ejemplo caso cervezas:
 <img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_menu_cerveza_click.JPG?raw=true" alt="Captura menu cerveza"/>
 
+Cada categoria tendra una ruta de /productos/:categoryId. Son obtenidos mediante el uso del hook useParams.
 Cada categoria obtiene los productos a traves de una query a un servidor de firebase, mediante
 la funcion getCategoryMenu(CATEGORIA_SOLICITADA). La página principal lo hace mediante el 
 llamado a la funcion getAllMenu().
-Cada categoria tendra una ruta de /productos/:categoryId.
-Para poder diferenciar en que sección se encuentra el usuario se utiliza el hook useParams,
-cada parametro entonces sera utilizado para determinar la funcion y parametro correcto.
+
+Cada parametro de la ruta entonces sera utilizado para determinar la funcion y parametro correctos para realizar
+la querty a la base de datos de Firebase.
 En caso de la página principal este carece de params, por lo tanto, se usa el caso undefined
 para diferenciarlo.
 
@@ -111,7 +115,7 @@ export const getItemById = async (idToFetch) =>{
 }
 ```
 Luego de ingresar una cantidad valida y clickear comprar, se renderizada un boton
-de finalizar compra si es que no desea comprar mas productos. Se añade usando context la 
+de finalizar compra, si es que no desea comprar mas productos. Se añade usando context la 
 cantidad y el producto al carrito de compras. El navbar es renderizado en consecuencia, de tal
 manera que es visible el carrito y la cantidad de items a comprar.
 <img src="https://github.com/stick2yourmind/ecommerceRestoBarSaravia/blob/main/capturas/foto_compra_producto_con_cart.JPG?raw=true" alt="Captura compra producto"/>
